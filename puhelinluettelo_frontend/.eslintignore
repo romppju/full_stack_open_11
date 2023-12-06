@@ -1,0 +1,6 @@
+build
+node_modules
+cypress.config.js
+/puhelinluettelo_backend/node_modules
+/puhelinluettelo_backend/build
+/puhelinluettelo_backend/.env
