@@ -16,8 +16,9 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: cd puhelinluettelo_frontend && npm install && cd puhelinluettelo_backend && npm install
-      - name: Say hello
-        run: |
-          echo "Hello World!!"
-      - name: list files
-        run: ls
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: cd puhelinluettelo_frontend && cypress:run
+          start: cd puhelinluettelo_frontend/puhelinluettelo_backend && npm run start
+          wait-on: http://localhost:3001
