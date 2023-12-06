@@ -125,7 +125,7 @@ const App = () => {
         success={notification.success}
       />
       <Filter handleChange={handleFilterChange} />
-      <h2>add a new</h2>
+      <h2>Add a new number</h2>
       <PersonForm
         add={addPerson}
         name={newName}
