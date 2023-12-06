@@ -9,16 +9,19 @@ on:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: ./puhelinluettelo_frontend/
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
       - name: Install dependencies
-        run: cd puhelinluettelo_frontend && npm install && cd puhelinluettelo_backend && npm install
+        run: npm install && cd puhelinluettelo_backend && npm install
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
-          command: cd puhelinluettelo_frontend && cypress:run
-          start: cd puhelinluettelo_frontend/puhelinluettelo_backend && npm run start
+          command: cypress:run
+          start: cd puhelinluettelo_backend && npm run start
           wait-on: http://localhost:3001
