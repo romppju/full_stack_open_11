@@ -23,3 +23,9 @@ jobs:
         run: npm install && cd puhelinluettelo_backend && npm install
       - name: Check style
         run: npm run lint
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run cypress:run
+          start: npm run start:server
+          wait-on: http://localhost:3001

@@ -20,7 +20,8 @@
     "server": "json-server -p3001 --watch db.json",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start:server": "cd puhelinluettelo_backend && npm start"
   },
   "eslintConfig": {
     "extends": [
