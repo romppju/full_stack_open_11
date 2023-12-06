@@ -4,6 +4,5 @@ echo "Build script"
 
 # add the commands here
 cd .. && npm install
-ls
 cd puhelinluettelo_backend && npm install
-npm run build:ui
+cd .. && npm run build && @powershell Copy-Item build -Recurse puhelinluettelo_backend
