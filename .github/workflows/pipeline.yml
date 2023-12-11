@@ -19,8 +19,10 @@ jobs:
       - name: Check style
         run: npm run lint
       - name: e2e tests
+        env:
+          URI: ${{ secrets.MONGODB_URI }}
         uses: cypress-io/github-action@v5
         with:
           command: npm run cypress:run
-          start: npm run start:server
+          start: MONGODB_URI="$URI" npm run start:server
           wait-on: http://localhost:3001
