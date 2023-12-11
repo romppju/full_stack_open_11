@@ -19,4 +19,6 @@ jobs:
       - name: Check style
         run: npm run lint
       - name: start server
-        run: npm run start:server
+        env:
+          URI: MONGODB_URI=${{ secrets.MONGODB_URI }}
+        run: MONGODB_URI="$URI" npm run start:server
