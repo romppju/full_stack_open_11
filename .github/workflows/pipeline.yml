@@ -21,4 +21,4 @@ jobs:
       - name: start server
         env:
           URI: MONGODB_URI=${{ secrets.MONGODB_URI }}
-        run: MONGODB_URI=mongodb+srv://fullstack:${password}@cluster0.o1opl.mongodb.net/?retryWrites=true&w=majority npm run start:server
+        run: MONGODB_URI="$MONGO_DB_URI" npm run start:server
