@@ -21,4 +21,5 @@ jobs:
       - name: start server
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        run: MONGODB_URI="$MONGODB_URI" npm run start:server && sleep 10 && curl http://localhost:3001 && npm run cypress:run
+          PORT: 3001
+        run: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server && sleep 10 && curl http://localhost:3001 && npm run cypress:run
