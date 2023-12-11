@@ -22,7 +22,7 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           PORT: 3001
-        run: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server && echo "KUKKUUU"
+        run: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server & echo "KUKKUUU"
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
