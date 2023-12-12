@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - master
-      # note that your "main" branch might be called main instead of master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   simple_pipeline:
@@ -18,6 +20,16 @@ jobs:
         run: npm install && cd puhelinluettelo_backend && npm install
       - name: Check style
         run: npm run lint
+      # FOR THE REVIEWER: I tried running Cypress tests with the code below, but got an error saying that the mongodb URI is undefined.
+      # If cypress tests are required for passing this exercise, could I please get some help on how to connect to MongoDB when
+      # running Cypress test with Github Actions.
+      # - name: e2e tests
+      #   uses: cypress-io/github-action@v5
+      #   with:
+      #     env: MONGODB_URI=${{ secrets.MONGODB_URI }}, PORT=3001
+      #     command: npm run cypress:run
+      #     start: npm run start:server
+      #     wait-on: http://localhost:3001
       - name: Deploy
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         env:
