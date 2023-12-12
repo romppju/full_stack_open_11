@@ -20,8 +20,9 @@ jobs:
         run: npm run lint
       - name: e2e tests
         uses: cypress-io/github-action@v6
+        env:
+          CYPRESS_port: 3001
         with:
-          env: MONGODB_URI=${{ secrets.MONGODB_URI }}, PORT=3001
           command: npm run cypress:run
-          start: 'PORT=3001 npm run start:server'
+          start: npm run start:server
           wait-on: http://localhost:3001
