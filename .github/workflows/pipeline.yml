@@ -23,5 +23,5 @@ jobs:
         with:
           env: MONGODB_URI=${{ secrets.MONGODB_URI }}, PORT=3001
           command: npm run cypress:run
-          start: npm run start:server
+          start: PORT=3001, npm run start:server
           wait-on: http://localhost:3001
