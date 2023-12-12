@@ -20,8 +20,9 @@ jobs:
         run: npm run lint
       - name: e2e test
         uses: cypress-io/github-action@v5
+        env:
+          CYPRESS_PORT: 3000
         with:
-          env: PORT=3000
           command: npm run cypress:run
           start: npm run start:server
           wait-on: http://127.0.0.1:3000/
