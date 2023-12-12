@@ -21,7 +21,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "lint": "eslint .",
-    "start:server": "cd puhelinluettelo_backend && MONGODB_URI=${{ secrets.MONGODB_URI }} PORT=3001 npm start"
+    "start:server": "cd puhelinluettelo_backend && PORT=3001 npm start"
   },
   "eslintConfig": {
     "extends": [
