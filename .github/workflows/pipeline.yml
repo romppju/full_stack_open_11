@@ -22,4 +22,6 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           PORT: 3001
-        run: ./test.sh
+        run: |
+          chmod -x ./test.sh
+          ./test.sh
