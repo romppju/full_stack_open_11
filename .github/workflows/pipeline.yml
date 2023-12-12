@@ -19,8 +19,12 @@ jobs:
         run: npm install && cd puhelinluettelo_backend && npm install
       - name: Check style
         run: npm run lint
-      - name: start server
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           PORT: 3001
-        run: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server & sleep 10 && curl http://localhost:3001
+        with:
+          command: npm run cypress:run
+          start: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run
+          wait-on: http://localhost:3001
