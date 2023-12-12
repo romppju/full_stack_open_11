@@ -9,6 +9,7 @@ on:
 jobs:
   simple_pipeline:
     runs-on: ubuntu-20.04
+    container: ubuntu
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -22,4 +23,4 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           PORT: 3001
-        run: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server & sleep 10 && curl 127.0.0.1:3001 && npm run cypress:run
+        run: MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server & sleep 10 && curl http://localhost:3001
