@@ -19,4 +19,7 @@ jobs:
       - name: Check style
         run: npm run lint
       - name: start server
-        run: MONGODB_URI=${{ secrets.MONGODB_URI }} PORT=3001 npm run start:server & sleep 10 && curl http://localhost:3001
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          PORT: 3001
+        run: ./test.sh

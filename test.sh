@@ -1,0 +1,1 @@
+MONGODB_URI="$MONGODB_URI" PORT="$PORT" npm run start:server & sleep 10 && curl http://localhost:3001
